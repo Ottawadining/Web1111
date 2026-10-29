@@ -8,10 +8,23 @@
 <meta property="og:title" content="Ottawa's Top 10 Restaurants · 2026">
 <meta property="og:description" content="Ottawa's 10 best restaurants for 2026, revealed from No. 10 to No. 1.">
 <meta property="og:url" content="https://ottawatop10.com/">
-<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ottawa Top 10">
+<meta property="og:image" content="https://ottawatop10.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="10 Best Restaurants in Ottawa, 2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ottawa's Top 10 Restaurants · 2026">
+<meta name="twitter:description" content="Ottawa's 10 best restaurants for 2026, revealed from No. 10 to No. 1.">
+<meta name="twitter:image" content="https://ottawatop10.com/og.jpg">
+<meta name="theme-color" content="#0b0a09">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -37,16 +50,19 @@
 
 <style>
   :root {
-    --gold: #c9a96e;
-    --ink: #f3eee6;
-    --mute: rgba(243, 238, 230, 0.62);
-    --faint: rgba(243, 238, 230, 0.18);
+    --bg: #0b0a09;
+    --paper: #efe8dc;
+    --mute: rgba(239, 232, 220, 0.58);
+    --rule: rgba(239, 232, 220, 0.16);
+    --hot: #ff4d2e;
+    --display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+    --mono: 'Courier Prime', 'Courier New', monospace;
+    --pad: clamp(18px, 4vw, 48px);
   }
   * { box-sizing: border-box; }
   html, body {
-    margin: 0; height: 100%; background: #000; color: var(--ink);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    -webkit-font-smoothing: antialiased;
+    margin: 0; height: 100%; background: var(--bg); color: var(--paper);
+    font-family: var(--mono); -webkit-font-smoothing: antialiased;
   }
   body { overflow: hidden; }
 
@@ -55,35 +71,54 @@
     -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
   }
 
+  /* small typewriter labels, used on intro + end */
+  .slate {
+    display: flex; justify-content: space-between; gap: 16px;
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--mute);
+  }
+
   /* ---------- Intro ---------- */
   #intro {
-    position: absolute; inset: 0; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center; padding: 24px;
-    transition: opacity 1.4s ease;
+    position: absolute; inset: 0; padding: var(--pad);
+    padding-bottom: calc(var(--pad) + env(safe-area-inset-bottom));
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: opacity 0.9s ease;
   }
   #intro.gone { opacity: 0; pointer-events: none; }
-  #intro .eyebrow, #intro .title, #intro .year, #intro .begin {
-    opacity: 0; transform: translateY(10px);
-    animation: rise 1.8s ease forwards;
+  #intro .slate { opacity: 0; animation: show 0.6s steps(3) forwards; }
+  #intro .slate.top { animation-delay: 0.2s; }
+  #intro .slate.bottom { animation-delay: 2.4s; }
+  @keyframes show { to { opacity: 1; } }
+
+  .hero {
+    display: flex; align-items: flex-end; gap: clamp(12px, 3vw, 40px); flex-wrap: wrap;
   }
-  #intro .eyebrow {
-    font-size: clamp(14px, 1.6vw, 18px); letter-spacing: 0.42em; text-transform: uppercase;
-    color: var(--mute); animation-delay: 0.4s;
+  .big {
+    font-family: var(--display); font-weight: 800; color: var(--hot);
+    font-size: min(58vh, 74vw); line-height: 0.74; letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums; margin-left: -0.04em;
   }
-  #intro .title {
-    font-weight: 300; font-size: clamp(46px, 9vw, 120px); line-height: 0.98;
-    margin: 0.22em 0 0.18em; letter-spacing: -0.01em; animation-delay: 1.1s;
+  .words {
+    display: flex; flex-direction: column; padding-bottom: 0.4vh;
+    font-family: var(--display); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(38px, 7.2vw, 108px); line-height: 0.86; letter-spacing: 0.005em;
   }
-  #intro .year {
-    font-style: italic; color: var(--gold); font-size: clamp(22px, 3vw, 34px);
-    animation-delay: 1.9s;
+  .words span { display: block; overflow: hidden; }
+  .words span i {
+    display: block; font-style: normal; transform: translateY(105%);
+    animation: up 0.9s cubic-bezier(.2, .7, .1, 1) forwards;
   }
-  #intro .begin {
-    margin-top: 9vh; font-size: 14px; letter-spacing: 0.38em; text-transform: uppercase;
-    color: var(--mute); animation: rise 1.8s ease 3s forwards, breathe 3.6s ease-in-out 4.8s infinite;
+  .words span:nth-child(1) i { animation-delay: 1.2s; }
+  .words span:nth-child(2) i { animation-delay: 1.35s; }
+  .words span:nth-child(3) i { animation-delay: 1.5s; }
+  @keyframes up { to { transform: none; } }
+  .begin { color: var(--paper); }
+  .begin b {
+    display: inline-block; width: 0.55em; height: 1em; margin-left: 4px; vertical-align: -0.18em;
+    background: var(--hot); animation: blink 1.1s steps(1) 3s infinite;
   }
-  @keyframes rise { to { opacity: 1; transform: none; } }
-  @keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @keyframes blink { 50% { opacity: 0; } }
 
   /* ---------- Slides ---------- */
   .slide {
@@ -98,90 +133,109 @@
   .shade {
     position: absolute; inset: 0;
     background:
-      linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 42%, rgba(0,0,0,0.08) 75%),
-      radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%);
+      linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 36%, rgba(0,0,0,0.08) 70%),
+      radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.42) 100%);
   }
   .caption {
-    position: absolute; left: clamp(24px, 7vw, 104px); right: 24px;
-    bottom: calc(clamp(72px, 13vh, 130px) + env(safe-area-inset-bottom));
+    position: absolute; left: var(--pad); right: var(--pad);
+    bottom: calc(clamp(64px, 11vh, 110px) + env(safe-area-inset-bottom));
   }
   .num {
-    font-style: italic; color: var(--gold); font-size: clamp(26px, 3.6vw, 42px);
+    font-family: var(--display); font-weight: 800; color: var(--hot);
+    font-size: clamp(64px, 11vw, 150px); line-height: 0.8; letter-spacing: -0.02em;
     opacity: 0; transform: translateY(10px);
-    transition: opacity 1.2s ease, transform 1.8s ease;
+    transition: opacity 0.9s ease, transform 1.4s ease;
   }
   .name {
-    font-weight: 400; font-size: clamp(46px, 8.4vw, 112px); line-height: 0.98;
-    margin: 0.08em 0 0.22em; letter-spacing: -0.012em;
-    opacity: 0; transform: translateY(16px);
-    transition: opacity 1.5s ease, transform 2.2s ease;
+    font-family: var(--display); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(44px, 8vw, 112px); line-height: 0.88; letter-spacing: 0.005em;
+    margin: 0.12em 0 0.28em;
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 1.2s ease, transform 1.8s ease;
   }
   .line {
-    margin: 0; max-width: 30em; font-size: clamp(18px, 2vw, 23px); color: var(--mute);
-    opacity: 0; transform: translateY(12px);
-    transition: opacity 1.5s ease 0.35s, transform 2.2s ease 0.35s;
+    margin: 0; max-width: 34em; font-size: clamp(14px, 1.5vw, 17px); line-height: 1.5;
+    color: rgba(239, 232, 220, 0.86); text-shadow: 0 1px 12px rgba(0,0,0,0.6);
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 1.2s ease 0.3s, transform 1.8s ease 0.3s;
   }
   .slide.num-on .num { opacity: 1; transform: none; }
   .slide.name-on .name, .slide.name-on .line { opacity: 1; transform: none; }
 
   /* ---------- Progress ticks ---------- */
   #ticks {
-    position: fixed; left: 50%; transform: translateX(-50%);
-    bottom: calc(26px + env(safe-area-inset-bottom));
-    display: flex; gap: 7px; opacity: 0; transition: opacity 1s ease; pointer-events: none;
+    position: fixed; left: var(--pad);
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    display: flex; gap: 6px; opacity: 0; transition: opacity 1s ease; pointer-events: none;
   }
   #ticks.show { opacity: 1; }
-  #ticks span { width: 18px; height: 2px; background: var(--faint); transition: background 0.8s ease; }
-  #ticks span.done { background: var(--gold); }
+  #ticks span { width: 16px; height: 3px; background: var(--rule); transition: background 0.6s ease; }
+  #ticks span.done { background: var(--hot); }
 
   /* ---------- End / full list ---------- */
   #end {
     position: fixed; inset: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
-    background: #000; opacity: 0; visibility: hidden; cursor: default;
-    transition: opacity 1.4s ease, visibility 0s linear 1.4s;
+    background: var(--bg); opacity: 0; visibility: hidden; cursor: default;
+    transition: opacity 1.2s ease, visibility 0s linear 1.2s;
   }
-  #end.show { opacity: 1; visibility: visible; transition: opacity 1.4s ease, visibility 0s; }
+  #end.show { opacity: 1; visibility: visible; transition: opacity 1.2s ease, visibility 0s; }
   .end-inner {
-    max-width: 760px; margin: 0 auto;
-    padding: clamp(56px, 12vh, 120px) 24px calc(64px + env(safe-area-inset-bottom));
-  }
-  .end-inner .eyebrow {
-    font-size: 14px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--mute);
+    max-width: 1080px; margin: 0 auto;
+    padding: var(--pad) var(--pad) calc(56px + env(safe-area-inset-bottom));
   }
   .end-inner h1 {
-    font-weight: 300; font-size: clamp(40px, 7vw, 76px); line-height: 1;
-    margin: 0.25em 0 0.15em; letter-spacing: -0.01em;
+    margin: clamp(48px, 10vh, 110px) 0 clamp(28px, 5vh, 56px);
+    font-family: var(--display); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(44px, 8vw, 104px); line-height: 0.86; letter-spacing: 0.005em;
   }
-  .end-inner .year { font-style: italic; color: var(--gold); font-size: 24px; }
-  .list { list-style: none; margin: 48px 0 0; padding: 0; border-top: 1px solid var(--faint); }
-  .list li { border-bottom: 1px solid var(--faint); }
-  .list li > a:first-child {
-    display: grid; grid-template-columns: 3.2rem 1fr; align-items: baseline; gap: 0 12px;
-    padding: 20px 0; color: inherit; text-decoration: none;
+  .end-inner h1 em { font-style: normal; color: var(--hot); font-weight: 800; }
+  .list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--paper); }
+  .list li {
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px 24px;
+    border-bottom: 1px solid var(--rule); padding: 18px 0;
   }
-  .list .r { font-style: italic; color: var(--gold); font-size: 26px; }
-  .list .n { font-size: clamp(26px, 4vw, 34px); line-height: 1.1; }
-  .list .d { grid-column: 2; color: var(--mute); font-size: 18px; margin-top: 4px; }
-  .list a:hover .n { color: var(--gold); }
-  .list li > a:first-child { padding-bottom: 8px; }
+  .list .main {
+    display: grid; grid-template-columns: clamp(64px, 9vw, 110px) 1fr; align-items: baseline;
+    color: inherit; text-decoration: none;
+  }
+  .list .r {
+    font-family: var(--display); font-weight: 800; color: var(--hot);
+    font-size: clamp(40px, 5.6vw, 68px); line-height: 0.9; font-variant-numeric: tabular-nums;
+  }
+  .list .n {
+    font-family: var(--display); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(30px, 4.6vw, 56px); line-height: 0.95;
+  }
+  .list .d {
+    grid-column: 2; display: block; margin-top: 8px; max-width: 40em;
+    font-size: 14px; line-height: 1.5; color: var(--mute);
+  }
+  .list .main:hover .n { color: var(--hot); }
   .list .site {
-    display: inline-block; margin: 0 0 20px calc(3.2rem + 12px);
-    font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--mute); text-decoration: none; border-bottom: 1px solid var(--faint); padding-bottom: 3px;
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--paper); text-decoration: none; white-space: nowrap;
   }
-  .list .site:hover { color: var(--gold); border-color: var(--gold); }
-  .actions { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 44px; }
-  .actions a, .actions button {
-    font: inherit; font-size: 14px; letter-spacing: 0.32em; text-transform: uppercase;
-    color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer;
-    text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 4px;
+  .list .site:hover { color: var(--hot); }
+  .actions { margin-top: 40px; }
+  .actions button {
+    font: inherit; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--bg); background: var(--paper); border: 0; padding: 12px 16px; cursor: pointer;
+  }
+  .actions button:hover { background: var(--hot); }
+
+  @media (max-width: 640px) {
+    .hide-sm { display: none; }
+    .big { font-size: min(54vh, 140vw); }
+    .words { font-size: 18vw; }
+    .name { font-size: 14vw; }
+    .list li { grid-template-columns: 1fr; }
+    .list .site { margin-left: clamp(64px, 9vw, 110px); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .num, .name, .line, #intro .eyebrow, #intro .title, #intro .year, #intro .begin {
-      transform: none !important;
-    }
-    #intro .begin { animation: rise 1.2s ease 2s forwards; }
+    .num, .name, .line { transform: none !important; }
+    .words span i { animation: none; transform: none; }
+    .begin b { animation: none; }
   }
 </style>
 </head>
@@ -189,10 +243,12 @@
 
 <div id="stage" aria-live="polite">
   <div id="intro">
-    <div class="eyebrow">Ottawa's</div>
-    <div class="title">10 Best<br>Restaurants</div>
-    <div class="year">2026</div>
-    <div class="begin">Tap to begin</div>
+    <div class="slate top"><span>Ottawa, Ontario</span><span>2026</span></div>
+    <div class="hero">
+      <div class="big" id="bigNum">10</div>
+      <div class="words"><span><i>Best</i></span><span><i>Restaurants</i></span><span><i>in Ottawa</i></span></div>
+    </div>
+    <div class="slate bottom"><span class="hide-sm">Counting down from No.&nbsp;10</span><span class="begin">Tap to begin<b></b></span></div>
   </div>
   <!-- slides are inserted here -->
 </div>
@@ -201,14 +257,10 @@
 
 <section id="end" aria-label="Ottawa's Top 10 Restaurants 2026">
   <div class="end-inner">
-    <div class="eyebrow">Ottawa's</div>
-    <h1>Top 10 Restaurants</h1>
-    <div class="year">2026</div>
-    <ul class="list" id="list"></ul>
-    <div class="actions">
-      <button type="button" id="replay">Watch again</button>
-      <a href="https://ottawatop50.com/">See the Top 50</a>
-    </div>
+    <div class="slate"><span>Ottawa, Ontario</span><span>2026</span></div>
+    <h1><em>10</em> Best Restaurants in Ottawa</h1>
+    <ol class="list" id="list"></ol>
+    <div class="actions"><button type="button" id="replay">&#8634; Watch again</button></div>
   </div>
 </section>
 
@@ -246,6 +298,7 @@ const endEl = document.getElementById('end');
 const listEl = document.getElementById('list');
 
 const PLACEHOLDER = 'radial-gradient(ellipse at 38% 42%, #2b241b 0%, #120f0b 55%, #050404 100%)';
+const pad = n => String(n).padStart(2, '0');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 function motion(d) {
@@ -259,6 +312,18 @@ function motion(d) {
   }
 }
 
+/* Intro: the big number rolls 01 -> 10 like a ticket counter */
+(function roll() {
+  const el = document.getElementById('bigNum');
+  if (reduce) return;
+  let n = 0;
+  el.textContent = '00';
+  const t = setInterval(() => {
+    n++; el.textContent = pad(n);
+    if (n >= 10) clearInterval(t);
+  }, 75);
+})();
+
 /* Build slides, ticks and the full list */
 const slides = LIST.map(d => {
   const el = document.createElement('section');
@@ -266,7 +331,7 @@ const slides = LIST.map(d => {
   el.innerHTML =
     `<div class="photo"></div><div class="shade"></div>
      <div class="caption">
-       <div class="num">No. ${d.rank}</div>
+       <div class="num">${pad(d.rank)}</div>
        <h2 class="name">${esc(d.name)}</h2>
        <p class="line">${esc(d.line)}</p>
      </div>`;
@@ -285,12 +350,11 @@ LIST.slice().sort((a, b) => a.rank - b.rank).forEach(d => {
   const i = LIST.indexOf(d);
   const li = document.createElement('li');
   li.innerHTML =
-    `<a href="#${d.rank}" data-i="${i}">
-       <span class="r">${d.rank}</span>
-       <span class="n">${esc(d.name)}</span>
-       <span class="d">${esc(d.line)}</span>
+    `<a class="main" href="#${d.rank}" data-i="${i}">
+       <span class="r">${pad(d.rank)}</span>
+       <span><span class="n">${esc(d.name)}</span><span class="d">${esc(d.line)}</span></span>
      </a>` +
-    (d.url ? `<a class="site" href="${esc(d.url)}" target="_blank" rel="noopener">Visit site</a>` : '');
+    (d.url ? `<a class="site" href="${esc(d.url)}" target="_blank" rel="noopener">Website &#8599;</a>` : '');
   listEl.appendChild(li);
 });
 
