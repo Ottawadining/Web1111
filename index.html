@@ -100,7 +100,7 @@
     font-variant-numeric: tabular-nums; margin-left: -0.04em;
   }
   .words {
-    display: flex; flex-direction: column; padding-bottom: 0.4vh;
+    display: flex; flex-direction: column; padding-bottom: 0.4vh; margin: 0;
     font-family: var(--display); font-weight: 700; text-transform: uppercase;
     font-size: clamp(38px, 7.2vw, 108px); line-height: 0.86; letter-spacing: 0.005em;
   }
@@ -183,12 +183,12 @@
     max-width: 1080px; margin: 0 auto;
     padding: var(--pad) var(--pad) calc(56px + env(safe-area-inset-bottom));
   }
-  .end-inner h1 {
+  .end-inner h2 {
     margin: clamp(48px, 10vh, 110px) 0 clamp(28px, 5vh, 56px);
     font-family: var(--display); font-weight: 700; text-transform: uppercase;
     font-size: clamp(44px, 8vw, 104px); line-height: 0.86; letter-spacing: 0.005em;
   }
-  .end-inner h1 em { font-style: normal; color: var(--hot); font-weight: 800; }
+  .end-inner h2 em { font-style: normal; color: var(--hot); font-weight: 800; }
   .list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--paper); }
   .list li {
     display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px 24px;
@@ -246,7 +246,7 @@
     <div class="slate top"><span>Ottawa, Ontario</span><span>2026</span></div>
     <div class="hero">
       <div class="big" id="bigNum">10</div>
-      <div class="words"><span><i>Best</i></span><span><i>Restaurants</i></span><span><i>in Ottawa</i></span></div>
+      <h1 class="words"><span><i>Best</i></span><span><i>Restaurants</i></span><span><i>in Ottawa</i></span></h1>
     </div>
     <div class="slate bottom"><span class="hide-sm">Counting down from No.&nbsp;10</span><span class="begin">Tap to begin<b></b></span></div>
   </div>
@@ -258,8 +258,49 @@
 <section id="end" aria-label="Ottawa's Top 10 Restaurants 2026">
   <div class="end-inner">
     <div class="slate"><span>Ottawa, Ontario</span><span>2026</span></div>
-    <h1><em>10</em> Best Restaurants in Ottawa</h1>
-    <ol class="list" id="list"></ol>
+    <h2><em>10</em> Best Restaurants in Ottawa</h2>
+    <ol class="list" id="list">
+      <li>
+        <a class="main" href="#1" data-i="9"><span class="r">01</span><span><span class="n">Atelier</span><span class="d">A long, playful tasting menu from Ottawa&#x27;s most inventive kitchen.</span></span></a>
+        <a class="site" href="https://www.atelierrestaurant.ca/" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+      <li>
+        <a class="main" href="#2" data-i="8"><span class="r">02</span><span><span class="n">Antheia</span><span class="d">Chef Briana Kim&#x27;s intimate counter, where fermentation drives every course.</span></span></a>
+        <a class="site" href="https://www.exploretock.com/antheia" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+      <li>
+        <a class="main" href="#3" data-i="7"><span class="r">03</span><span><span class="n">Stofa</span><span class="d">Chef Jason Sawision&#x27;s approachable fine dining in a calm, Nordic-inspired room in Wellington West.</span></span></a>
+        <a class="site" href="https://www.stofarestaurant.com/" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+      <li>
+        <a class="main" href="#4" data-i="6"><span class="r">04</span><span><span class="n">Raphaël</span><span class="d">Chef Lizardo Becerra&#x27;s Peruvian cooking, refined into plates made for sharing.</span></span></a>
+        <a class="site" href="https://www.raphaelperuviancuisine.ca/" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+      <li>
+        <a class="main" href="#5" data-i="5"><span class="r">05</span><span><span class="n">Gitanes</span><span class="d">French cooking with Canadian ingredients, a raw bar and a serious wine cellar, tucked off Elgin.</span></span></a>
+        <a class="site" href="https://www.gitanes.co/" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+      <li>
+        <a class="main" href="#6" data-i="4"><span class="r">06</span><span><span class="n">Fauna</span><span class="d">Seasonal small plates on Bank Street, and a bison tartare regulars keep coming back for.</span></span></a>
+        <a class="site" href="https://www.faunaottawa.ca/" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+      <li>
+        <a class="main" href="#7" data-i="3"><span class="r">07</span><span><span class="n">Supply &amp; Demand</span><span class="d">Wellington West&#x27;s raw bar and pasta destination, from crudo to squid ink rigatoni.</span></span></a>
+        <a class="site" href="https://supplyanddemandfoods.ca/" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+      <li>
+        <a class="main" href="#8" data-i="2"><span class="r">08</span><span><span class="n">Beckta</span><span class="d">Stephen Beckta&#x27;s flagship, setting the standard for polished dining in Ottawa since 2003.</span></span></a>
+        <a class="site" href="https://www.beckta.com/" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+      <li>
+        <a class="main" href="#9" data-i="1"><span class="r">09</span><span><span class="n">Town</span><span class="d">Italian-inspired comfort on Elgin since 2010, cooked with real generosity.</span></span></a>
+        <a class="site" href="https://www.townlovesyou.ca/" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+      <li>
+        <a class="main" href="#10" data-i="0"><span class="r">10</span><span><span class="n">Aiana</span><span class="d">Chef Raghav Chaudhary&#x27;s tasting menus, built on Canadian seafood, game and produce.</span></span></a>
+        <a class="site" href="https://aiana.ca/" target="_blank" rel="noopener">Website &#8599;</a>
+      </li>
+    </ol>
     <div class="actions"><button type="button" id="replay">&#8634; Watch again</button></div>
   </div>
 </section>
@@ -346,17 +387,6 @@ const slides = LIST.map(d => {
 
 LIST.forEach(() => ticksEl.appendChild(document.createElement('span')));
 
-LIST.slice().sort((a, b) => a.rank - b.rank).forEach(d => {
-  const i = LIST.indexOf(d);
-  const li = document.createElement('li');
-  li.innerHTML =
-    `<a class="main" href="#${d.rank}" data-i="${i}">
-       <span class="r">${pad(d.rank)}</span>
-       <span><span class="n">${esc(d.name)}</span><span class="d">${esc(d.line)}</span></span>
-     </a>` +
-    (d.url ? `<a class="site" href="${esc(d.url)}" target="_blank" rel="noopener">Website &#8599;</a>` : '');
-  listEl.appendChild(li);
-});
 
 /* Playback */
 let idx = -1, started = false, timers = [];
