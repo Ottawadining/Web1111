@@ -34,8 +34,8 @@
   "itemListOrder": "https://schema.org/ItemListOrderAscending",
   "numberOfItems": 10,
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "item": {"@type": "Restaurant", "name": "Atelier", "url": "https://www.atelierrestaurant.ca/", "address": {"@type": "PostalAddress", "addressLocality": "Ottawa", "addressRegion": "ON", "addressCountry": "CA"}}},
-    {"@type": "ListItem", "position": 2, "item": {"@type": "Restaurant", "name": "Antheia", "url": "https://www.exploretock.com/antheia", "address": {"@type": "PostalAddress", "addressLocality": "Ottawa", "addressRegion": "ON", "addressCountry": "CA"}}},
+    {"@type": "ListItem", "position": 1, "item": {"@type": "Restaurant", "name": "Antheia", "url": "https://www.exploretock.com/antheia", "address": {"@type": "PostalAddress", "addressLocality": "Ottawa", "addressRegion": "ON", "addressCountry": "CA"}}},
+    {"@type": "ListItem", "position": 2, "item": {"@type": "Restaurant", "name": "Atelier", "url": "https://www.atelierrestaurant.ca/", "address": {"@type": "PostalAddress", "addressLocality": "Ottawa", "addressRegion": "ON", "addressCountry": "CA"}}},
     {"@type": "ListItem", "position": 3, "item": {"@type": "Restaurant", "name": "Stofa", "url": "https://www.stofarestaurant.com/", "address": {"@type": "PostalAddress", "addressLocality": "Ottawa", "addressRegion": "ON", "addressCountry": "CA"}}},
     {"@type": "ListItem", "position": 4, "item": {"@type": "Restaurant", "name": "Raphaël", "url": "https://www.raphaelperuviancuisine.ca/", "address": {"@type": "PostalAddress", "addressLocality": "Ottawa", "addressRegion": "ON", "addressCountry": "CA"}}},
     {"@type": "ListItem", "position": 5, "item": {"@type": "Restaurant", "name": "Gitanes", "url": "https://www.gitanes.co/", "address": {"@type": "PostalAddress", "addressLocality": "Ottawa", "addressRegion": "ON", "addressCountry": "CA"}}},
@@ -222,6 +222,12 @@
     color: var(--bg); background: var(--paper); border: 0; padding: 12px 16px; cursor: pointer;
   }
   .actions button:hover { background: var(--hot); }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+  .actions .read {
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--paper); text-decoration: none; border-bottom: 1px solid var(--hot); padding-bottom: 3px;
+  }
+  .actions .read:hover { color: var(--hot); }
 
   @media (max-width: 640px) {
     .hide-sm { display: none; }
@@ -261,12 +267,12 @@
     <h2><em>10</em> Best Restaurants in Ottawa</h2>
     <ol class="list" id="list">
       <li>
-        <a class="main" href="#1" data-i="9"><span class="r">01</span><span><span class="n">Atelier</span><span class="d">A long, playful tasting menu from Ottawa&#x27;s most inventive kitchen.</span></span></a>
-        <a class="site" href="https://www.atelierrestaurant.ca/" target="_blank" rel="noopener">Website &#8599;</a>
+        <a class="main" href="#1" data-i="9"><span class="r">01</span><span><span class="n">Antheia</span><span class="d">Chef Briana Kim&#x27;s intimate counter, where fermentation drives every course.</span></span></a>
+        <a class="site" href="https://www.exploretock.com/antheia" target="_blank" rel="noopener">Website &#8599;</a>
       </li>
       <li>
-        <a class="main" href="#2" data-i="8"><span class="r">02</span><span><span class="n">Antheia</span><span class="d">Chef Briana Kim&#x27;s intimate counter, where fermentation drives every course.</span></span></a>
-        <a class="site" href="https://www.exploretock.com/antheia" target="_blank" rel="noopener">Website &#8599;</a>
+        <a class="main" href="#2" data-i="8"><span class="r">02</span><span><span class="n">Atelier</span><span class="d">A playful seven-course tasting menu from Ottawa&#x27;s most inventive kitchen.</span></span></a>
+        <a class="site" href="https://www.atelierrestaurant.ca/" target="_blank" rel="noopener">Website &#8599;</a>
       </li>
       <li>
         <a class="main" href="#3" data-i="7"><span class="r">03</span><span><span class="n">Stofa</span><span class="d">Chef Jason Sawision&#x27;s approachable fine dining in a calm, Nordic-inspired room in Wellington West.</span></span></a>
@@ -301,7 +307,7 @@
         <a class="site" href="https://aiana.ca/" target="_blank" rel="noopener">Website &#8599;</a>
       </li>
     </ol>
-    <div class="actions"><button type="button" id="replay">&#8634; Watch again</button></div>
+    <div class="actions"><button type="button" id="replay">&#8634; Watch again</button><a class="read" href="best-restaurants-ottawa">The full guide &#8594;</a></div>
   </div>
 </section>
 
@@ -322,8 +328,8 @@ const LIST = [
   { rank: 5,  name: "Gitanes",         line: "French cooking with Canadian ingredients, a raw bar and a serious wine cellar, tucked off Elgin.", img: "05.jpg", fx: 45, fy: 64, move: "in",    url: "https://www.gitanes.co/" },
   { rank: 4,  name: "Raphaël",         line: "Chef Lizardo Becerra's Peruvian cooking, refined into plates made for sharing.", img: "04.jpg", fx: 47, fy: 42, move: "out",   url: "https://www.raphaelperuviancuisine.ca/" },
   { rank: 3,  name: "Stofa",           line: "Chef Jason Sawision's approachable fine dining in a calm, Nordic-inspired room in Wellington West.", img: "03.jpg", fx: 45, fy: 55, move: "left",  url: "https://www.stofarestaurant.com/" },
-  { rank: 2,  name: "Antheia",         line: "Chef Briana Kim's intimate counter, where fermentation drives every course.", img: "02.jpg", fx: 50, fy: 62, move: "in",    url: "https://www.exploretock.com/antheia" },
-  { rank: 1,  name: "Atelier",         line: "A long, playful tasting menu from Ottawa's most inventive kitchen.", img: "01.jpg", fx: 42, fy: 55, move: "in",    url: "https://www.atelierrestaurant.ca/" }
+  { rank: 2,  name: "Atelier",         line: "A playful seven-course tasting menu from Ottawa's most inventive kitchen.", img: "01.jpg", fx: 42, fy: 55, move: "in",    url: "https://www.atelierrestaurant.ca/" },
+  { rank: 1,  name: "Antheia",         line: "Chef Briana Kim's intimate counter, where fermentation drives every course.", img: "02.jpg", fx: 50, fy: 62, move: "in",    url: "https://www.exploretock.com/antheia" }
 ];
 
 /* Timing (ms) */
